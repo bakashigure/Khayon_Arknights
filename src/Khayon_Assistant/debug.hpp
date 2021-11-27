@@ -11,7 +11,6 @@ QT_BEGIN_NAMESPACE
 namespace Ui{class Debug;}
 QT_END_NAMESPACE
 
-namespace DBG{
 class Debug{
 public:
     Debug(Ui::Khayon *_ui){
@@ -62,5 +61,5 @@ public:
 private:
     Ui::Khayon *ui;
 };
-}
+
 #endif //KHAYON_ARKNIGHTS_DEBUG_HPP

@@ -9,13 +9,13 @@ int main(int argc, char *argv[]) {
     Khayon w;
 
     w.show();
-    DBG::Debug d(w.get_ui());
+    Debug dbg(w.get_ui());
     std::vector<std::string> sb={"1","2","3","4"};
     std::map<int,int> sbb={std::pair<int,int>{1,2},std::pair<int,int>{3,50}};
     std::vector<int> ssb={1,2,3,4,5};
     std::string s("114514");
 
-    d(sbb);
+    dbg(sbb);
 
     return QApplication::exec();
 }
