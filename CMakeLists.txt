@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOUIC_SEARCH_PATHS src/Khayon_Gui)
 
 set(CMAKE_PREFIX_PATH "E:/Env/Qt/6.2.1/mingw81_64/lib/cmake")
 
@@ -14,12 +15,13 @@ find_package(Qt6 COMPONENTS
         Widgets
         REQUIRED)
 
-add_executable(Khayon_Arknights main.cpp src/Khayon_Gui/khayon.cpp src/Khayon_Gui/khayon.h src/Khayon_Gui/khayon.ui src/Khayon_Assistant/Recruitment.cpp src/Khayon_Assistant/Recruitment.h src/Khayon_Assistant/Operator.cpp src/Khayon_Assistant/Operator.h)
+add_executable(Khayon_Arknights main.cpp src/Khayon_Gui/khayon.cpp src/Khayon_Gui/khayon.h src/Khayon_Gui/khayon.ui src/Khayon_Assistant/Recruitment.cpp src/Khayon_Assistant/Recruitment.h src/Khayon_Assistant/OperatorInfo.cpp src/Khayon_Assistant/OperatorInfo.h src/Khayon_Assistant/debug.hpp)
 target_link_libraries(Khayon_Arknights
         Qt::Core
         Qt::Gui
         Qt::Widgets
         )
+
 
 if (WIN32)
     set(DEBUG_SUFFIX)
