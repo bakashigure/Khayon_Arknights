@@ -7,6 +7,7 @@
 
 #include <QWidget>
 #include "ui_Khayon.h"
+#include "../Khayon_Assistant/OperatorInfo.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class Khayon;}
 QT_END_NAMESPACE
@@ -17,14 +18,12 @@ Q_OBJECT
 public:
     explicit Khayon(QWidget *parent = nullptr);
     ~Khayon() override;
-    auto *get_ui()
-    {
-        return ui;
-    }
-
+    void  init();
+    Ui::Khayon* get_ui() const;
 
 private:
     Ui::Khayon *ui;
+    kaltsit::OperatorInfo *opi;
 };
 
 

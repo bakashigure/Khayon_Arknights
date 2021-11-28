@@ -7,15 +7,18 @@
 #include <vector>
 #include "ui_Khayon.h"
 #include <typeinfo>
+#include <iostream>
 QT_BEGIN_NAMESPACE
 namespace Ui{class Debug;}
 QT_END_NAMESPACE
 
 class Debug{
 public:
-    Debug(Ui::Khayon *_ui){
+    Debug()= default;
+    explicit Debug(Ui::Khayon *_ui){
         ui = _ui;
     };
+    ~Debug() = default;
 
     template<typename T>
     void operator() (T const& t)
@@ -53,13 +56,30 @@ public:
             ui->debug_output->append(cv(kv.first)+QString(": ")+cv(kv.second));
     }
 
-    QString cv(int _num)
+    QString cv(int &_num) const
     {return QString::number(_num);}
 
-    QString cv(std::string _s)
-    {return QString::fromStdString(_s);}
-private:
-    Ui::Khayon *ui;
+    QString cv(int const& _num) const{
+        return QString::number(_num);
+    }
+
+    QString cv(std::string &_string) const
+    {return QString::fromStdString(_string);}
+
+    QString cv(std::string const& _string) const{
+        return QString::fromStdString(_string);
+    }
+
+
+    static Ui::Khayon* ui;
+
+    static void set_ui(Ui::Khayon* _ui)
+    {
+        std::cout<<"sb";
+        ui=_ui;
+    }
 };
+
+
 
 #endif //KHAYON_ARKNIGHTS_DEBUG_HPP

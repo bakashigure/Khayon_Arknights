@@ -9,6 +9,17 @@
 
 Khayon::Khayon(QWidget *parent) : QWidget(parent), ui(new Ui::Khayon) {
     ui->setupUi(this);
+    opi=nullptr;
+}
+
+void Khayon::init() {
+    auto *op= new kaltsit::OperatorInfo();
+    opi = op;
+    opi->loadOperators("../src/resources/character_table.json");
+}
+
+Ui::Khayon *Khayon::get_ui() const {
+    return ui;
 }
 
 Khayon::~Khayon() {
