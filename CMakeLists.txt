@@ -8,7 +8,6 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOUIC_SEARCH_PATHS src/Khayon_Gui)
 
 set(CMAKE_PREFIX_PATH "E:/Env/Qt/6.2.1/mingw81_64/lib/cmake")
-
 find_package(Qt6 COMPONENTS
         Core
         Gui
@@ -25,7 +24,7 @@ target_link_libraries(Khayon_Arknights
 
 if (WIN32)
     set(DEBUG_SUFFIX)
-    if (CMAKE_BUILD_TYPE MATCHES "Debug")
+    if (CMAKE_BUILD_TYPE MATCHES "Debug" AND QT_VERSION LESS_EQUAL 5 AND QT_MINOR_VERSION LESS 14)
         set(DEBUG_SUFFIX "d")
     endif ()
     set(QT_INSTALL_PATH "${CMAKE_PREFIX_PATH}")
