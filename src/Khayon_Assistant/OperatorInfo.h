@@ -34,7 +34,7 @@ namespace kaltsit{
         std::unordered_map<std::string,Operator> recruit_ops; //干员详细信息 k:干员名称, v:干员信息
         std::unordered_map<std::string,std::set<std::string>> recruit_tags; //k:tag v:所有包含此tag的公招人员
         std::set<std::string> recruit_ops_nameset; //公招所有干员名称
-        static std::unordered_map<std::string,std::string> tags_eng_to_zh; // 英文说明的tag对照表
+        static std::unordered_map<std::string,std::string> tags_eng_to_zh; // 英中的tag对照表
     };
 }
 

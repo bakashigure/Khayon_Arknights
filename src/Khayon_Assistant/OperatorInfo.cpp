@@ -4,14 +4,26 @@
 #define FMT_HEADER_ONLY
 
 #include "OperatorInfo.h"
+#include "../utils/fmt_8.0.1/ranges.h"
 #include "../utils/fmt_8.0.1/core.h"
+
 #include <string>
 #include <regex>
 
 std::unordered_map<std::string,std::string> kaltsit::OperatorInfo::tags_eng_to_zh= {
-        {"RANGED", "远程"},
-        {"MEDIC", "医疗"},
-        };
+        {"RANGED", "远程位"},
+        {"MEDIC", "医疗干员"},
+        {"MELEE","近战位"},
+        {"PIONEER","先锋干员"},
+        {"SNIPER","狙击干员"},
+        {"CASTER","术士干员"},
+        {"WARRIOR","近卫干员"},
+        {"TANK","重装干员"},
+        {"SUPPORT","辅助干员"},
+        {"SPECIAL","特种干员"},
+        {"star5","资深干员"},
+        {"star6","高级资深干员"}
+};
 
 
 void kaltsit::OperatorInfo::loadRecruitOperators(std::string&& gacha_table) {
@@ -35,6 +47,7 @@ void kaltsit::OperatorInfo::loadRecruitOperators(std::string&& gacha_table) {
 void kaltsit::OperatorInfo::loadRecruitOperatorsDetail(std::string&& character_table) {
     std::ifstream operator_info_raw(character_table);
     configor::json operator_info_json;
+    auto& tag = tags_eng_to_zh;
     operator_info_raw >> operator_info_json;
     for(const auto &info: operator_info_json)
     {
@@ -43,9 +56,19 @@ void kaltsit::OperatorInfo::loadRecruitOperatorsDetail(std::string&& character_t
             auto &op = recruit_ops[info["name"].as_string()];
             op.name = info["name"].as_string();
             op.level = info["rarity"].as_integer()+1;
+            if(op.level==5||op.level==6||op.level==2)
+                op.tag.emplace(tag[fmt::format("star{}",op.level)]);
             op.desp = info["itemDesc"].as_string();
+            op.tag.emplace(tag[info["position"].as_string()]);
+            op.tag.emplace(tag[info["profession"].as_string()]);
+            for(const auto& _tag:info["tagList"])
+                op.tag.emplace(_tag);
         }
     }
+    Debug d;
+
+    auto _dd = fmt::format("name: {}\n tag: {}\n desc:{}",recruit_ops["红"].name,recruit_ops["红"].tag,recruit_ops["红"].desp);
+    d(d.cv(_dd));
 
 };
 
