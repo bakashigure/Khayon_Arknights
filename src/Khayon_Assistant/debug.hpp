@@ -20,12 +20,7 @@ public:
     };
     ~Debug() = default;
 
-    template<typename T>
-    void operator() (T const& t)
-    {
-        ui->debug_output->clear();
-        ui->debug_output->setText(t);
-    }
+
 
     template<typename T>
     void operator() (std::vector<T> const& _vector) {
@@ -56,6 +51,29 @@ public:
             ui->debug_output->append(cv(kv.first)+QString(": ")+cv(kv.second));
     }
 
+    template<typename T>
+    void operator() (const std::set<T>& _set) const
+    {
+        ui->debug_output->clear();
+        for(const auto& v:_set)
+            ui->debug_output->append(cv(v));
+    }
+
+    template<typename T>
+    void operator() (std::set<T>& _set) const
+    {
+        ui->debug_output->clear();
+        for(const auto& v:_set)
+            ui->debug_output->append(cv(v));
+    }
+
+    void operator() (std::set<std::string>&& _set)
+    {
+        ui->debug_output->clear();
+        for(const auto& v:_set)
+            ui->debug_output->append(cv(v));
+    }
+
     QString cv(int &_num) const
     {return QString::number(_num);}
 
@@ -75,7 +93,6 @@ public:
 
     static void set_ui(Ui::Khayon* _ui)
     {
-        std::cout<<"sb";
         ui=_ui;
     }
 };
