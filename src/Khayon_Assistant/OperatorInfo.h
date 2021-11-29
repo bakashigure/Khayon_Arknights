@@ -7,28 +7,36 @@
 #include "../utils/configor_0.9.14/json.hpp"
 #include "debug.hpp"
 #include <fstream>
+#include <utility>
 
 namespace kaltsit{
     struct Operator{
+        Operator()= default;
+        Operator(std::string name,unsigned short level,std::set<std::string> tag,std::string desp):
+            name(std::move(name)),level(level),tag(std::move(tag)),desp(std::move(desp)){};
         std::string name; // 干员名称
         unsigned short level; // 干员星级
         std::set<std::string> tag; //携带词条
-        std::string comment; //简要说明
+        std::string desp; //简要说明
     };
 
     class OperatorInfo{
     public:
         OperatorInfo()= default;;
         //~OperatorInfo();
-        void loadOperators(std::string &&character_table);
+        void loadRecruitOperators(std::string&& gacha_table);
+        void loadRecruitOperatorsDetail(std::string&& character_table);
 
     protected:
         bool load_operator_data(const std::string& path);
 
     private:
-        std::unordered_map<std::string,Operator> op; //干员详细信息 k:干员名称, v:干员信息
-        std::unordered_map<std::string,std::string> sb;
+        std::unordered_map<std::string,Operator> recruit_ops; //干员详细信息 k:干员名称, v:干员信息
+        std::unordered_map<std::string,std::set<std::string>> recruit_tags; //k:tag v:所有包含此tag的公招人员
+        std::set<std::string> recruit_ops_nameset; //公招所有干员名称
+        static std::unordered_map<std::string,std::string> tags_eng_to_zh; // 英文说明的tag对照表
     };
 }
+
 
 #endif //KHAYON_ARKNIGHTS_OPERATORINFO_H
