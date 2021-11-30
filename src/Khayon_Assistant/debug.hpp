@@ -74,6 +74,10 @@ public:
             ui->debug_output->append(cv(v));
     }
 
+    void operator() (QString _qs){
+        ui->debug_output->clear();
+        ui->debug_output->append(_qs);
+    }
     QString cv(int &_num) const
     {return QString::number(_num);}
 
