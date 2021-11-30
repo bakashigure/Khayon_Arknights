@@ -14,6 +14,7 @@ namespace kaltsit{
         Operator()= default;
         Operator(std::string name,unsigned short level,std::set<std::string> tag,std::string desp):
             name(std::move(name)),level(level),tag(std::move(tag)),desp(std::move(desp)){};
+        ~Operator() = default;
         std::string name; // 干员名称
         unsigned short level; // 干员星级
         std::set<std::string> tag; //携带词条
@@ -22,13 +23,13 @@ namespace kaltsit{
 
     class OperatorInfo{
     public:
-        OperatorInfo()= default;;
-        //~OperatorInfo();
+        OperatorInfo() = default;;
+        ~OperatorInfo() = default;
         void loadRecruitOperators(std::string&& gacha_table);
         void loadRecruitOperatorsDetail(std::string&& character_table);
 
     protected:
-        bool load_operator_data(const std::string& path);
+        std::set<std::string> recruit_tags_nameset; //公招所有tag
 
     private:
         std::unordered_map<std::string,Operator> recruit_ops; //干员详细信息 k:干员名称, v:干员信息
