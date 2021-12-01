@@ -68,6 +68,19 @@ p, li { white-space: pre-wrap; }
     <string>#TODO</string>
    </property>
   </widget>
+  <widget class="QCheckBox" name="Debug_checkbox">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>30</y>
+     <width>78</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>DEBUG</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
