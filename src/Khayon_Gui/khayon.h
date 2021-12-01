@@ -8,6 +8,7 @@
 #include <QWidget>
 #include "ui_Khayon.h"
 #include "../Khayon_Assistant/OperatorInfo.h"
+#include "../Khayon_Assistant/Recruitment.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class Khayon;}
 QT_END_NAMESPACE
@@ -24,6 +25,7 @@ public:
 private:
     Ui::Khayon *ui;
     kaltsit::OperatorInfo *opi;
+    kaltsit::Recruitment *recruit;
 };
 
 
