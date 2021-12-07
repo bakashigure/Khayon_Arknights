@@ -19,7 +19,7 @@ find_package(Qt6 COMPONENTS
         Widgets
         REQUIRED)
 
-add_executable(Khayon_Arknights main.cpp src/Khayon_Gui/khayon.cpp src/Khayon_Gui/khayon.h src/Khayon_Gui/khayon.ui src/Khayon_Assistant/Recruitment.cpp src/Khayon_Assistant/Recruitment.h src/Khayon_Assistant/OperatorInfo.cpp src/Khayon_Assistant/OperatorInfo.h src/Khayon_Assistant/debug.hpp src/Khayon_Assistant/util.h)
+add_executable(Khayon_Arknights main.cpp src/Khayon_Gui/khayon.cpp src/Khayon_Gui/khayon.h src/Khayon_Gui/khayon.ui src/Khayon_Assistant/Recruitment.cpp src/Khayon_Assistant/Recruitment.h src/Khayon_Assistant/OperatorInfo.cpp src/Khayon_Assistant/OperatorInfo.h src/Khayon_Assistant/debug.hpp src/Khayon_Assistant/util.h src/Khayon_Assistant/Adb.cpp src/Khayon_Assistant/Adb.h src/Khayon_Gui/mainwindow.cpp src/Khayon_Gui/mainwindow.h src/Khayon_Gui/mainwindow.ui)
 target_link_libraries(Khayon_Arknights
         Qt::Core
         Qt::Gui
