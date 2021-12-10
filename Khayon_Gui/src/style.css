@@ -1,0 +1,44 @@
+.button{
+    background-color: white;
+    font-size: 18px;
+    color:black;
+    border:none;
+    border-bottom: 2px solid #FFCCCC;
+    display: inline-block;
+    width: 32%;
+    text-decoration: none;
+    text-align: center;
+    transition-duration: 0.4s;
+    cursor:pointer;
+}
+
+.button:hover {
+    background-color: #FFCCCC;
+    color: white;
+}
+
+/*keep button pressed*/
+.button:active {
+    background-color: #FFCCCC;
+    color: white;
+    box-shadow: 0 -5px #666;
+    transform: translateY(4px);
+}
+
+
+
+
+
+
+.switchBtnGroup{
+    display: inline;
+   
+    height: 30px;
+    width: 100%;
+}
+
+.switchBtn{
+    
+    display: inline;
+    width:auto;
+}
