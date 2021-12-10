@@ -3,3 +3,10 @@
 /.idea/
 /cmake-build-gcc11_debug/
 /cmake-build-gcc11_release/
+/Khayon_Gui/node_modules/
+/Khayon_Assistant/build/
+/Khayon_Assistant/cmake-build-debug-mingw/
+/Khayon_Assistant/cmake-build-release-mingw/
+/Khayon_Assistant/.idea/
+/Khayon_Assistant/node_modules/*
+Khayon_Assistant/.vscode/
