@@ -1,0 +1,17 @@
+{
+  "name": "khayon_assistant",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "node-gyp rebuild"
+  },
+  "dependencies": {
+    "node-addon-api":"~4.2.0",
+    "bindings": "*"
+  },
+  "author": "",
+  "license": "ISC",
+  "gypfile": true
+}
