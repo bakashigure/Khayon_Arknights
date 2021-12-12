@@ -12,6 +12,7 @@
 #include "include/fmt_8.0.1/ranges.h"
 #include "include/fmt_8.0.1/core.h"
 #include <unordered_set>
+#include <algorithm>
 
 namespace kaltsit {
     class Recruitment{
@@ -21,7 +22,7 @@ namespace kaltsit {
 
         void getTagOffset(const std::set<std::string>& recruit_tags_nameset);
         void getTagOffset(std::unordered_map<std::string,std::set<std::string>>& um_ops_nameset);
-        void calcTag(std::set<std::string>& chosen_tag);
+        std::unordered_map<int, std::set<std::string>> calcTag(std::set<std::string>& chosen_tag);
 
     private:
         std::set<std::string> recruit_tags_nameset; //公招所有tag

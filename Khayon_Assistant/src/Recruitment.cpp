@@ -36,7 +36,7 @@ void kaltsit::Recruitment::getTagOffset(std::unordered_map<std::string, std::set
 }
 
 
-void kaltsit::Recruitment::calcTag(std::set<std::string>& chosen_tag) {
+std::unordered_map<int, std::set<std::string>> kaltsit::Recruitment::calcTag(std::set<std::string>& chosen_tag) {
     TIME_START
     auto& ctr = chosen_tag_res;
     std::vector<int> chosen_tag_offset;
@@ -72,6 +72,8 @@ void kaltsit::Recruitment::calcTag(std::set<std::string>& chosen_tag) {
             }
         }
     }
+    return current_res;
+
     /*
     for (auto kv: current_res)
         std::cout << fmt::format("{}: {}", kv.first, kv.second) << "\n";
