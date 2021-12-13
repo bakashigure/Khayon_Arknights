@@ -24,7 +24,7 @@
       },
     }],
   ],
-      "sources": [ "addon.cpp","src/khayon.cpp","src/OperatorInfo.cpp","src/Recruitment.cpp","src/util.h"]
+      "sources": [ "addon.cpp","src/khayon.cpp","src/OperatorInfo.cpp","src/Recruitment.cpp","src/util.cpp"]
     }
   ]
 }
