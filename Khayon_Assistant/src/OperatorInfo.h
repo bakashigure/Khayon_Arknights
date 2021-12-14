@@ -26,18 +26,17 @@ namespace kaltsit{
         ~OperatorInfo() = default;
         void loadRecruitOperators(std::string&& gacha_table);
         void loadRecruitOperatorsDetail(std::string&& character_table);
-
+        void loadTagsEnToZh(std::string&& tags_en_to_zh);
+        int getStar(std::string op_name);
         std::unordered_map<std::string,std::set<std::string>> um_tag_ops;
-    protected:
+        std::unordered_map<std::string,Operator> um_op_info; // unordered_map_operator_info 干员详细信息 k:干员名称, v:干员信息
+
         std::set<std::string> set_tags; //公招所有tag
         //k:tag v:所有包含此tag的公招人员
 
 
-    private:
-        std::unordered_map<std::string,Operator> um_op_info; // unordered_map_operator_info 干员详细信息 k:干员名称, v:干员信息
-
         std::set<std::string> set_op_name; //公招所有干员名称
-        static std::unordered_map<std::string,std::string> tags_eng_to_zh; // 英中的tag对照表
+        std::unordered_map<std::string,std::string> tags_eng_to_zh; // 英中的tag对照表
     };
 }
 

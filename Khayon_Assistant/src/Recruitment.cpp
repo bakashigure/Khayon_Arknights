@@ -4,6 +4,7 @@
 
 #include "Recruitment.h"
 #include <functional>
+#include "util.h"
 
 kaltsit::Recruitment::Recruitment(std::unordered_map<std::string, std::set<std::string>>& _um_tag_ops) {
     TIME_START
@@ -28,17 +29,42 @@ void kaltsit::Recruitment::getTagOffset(const std::set<std::string>& _recruit_ta
 void kaltsit::Recruitment::getTagOffset(std::unordered_map<std::string, std::set<std::string>>& um_ops_nameset) {
     tag_offset.clear();
     int _offset = 1;
+    
     for (const auto& kv: um_ops_nameset) {
+        //_debug("um_ops_nameset")
+        //std::cout<<fmt::format("{}: {}\n",kv.first,kv.second);
+
         tag_offset[kv.first] = std::to_string(1 << _offset);
         tag_offset[std::to_string(1 << _offset)] = kv.first;
         _offset++;
     }
 }
 
+std::unordered_set<std::string> kaltsit::Recruitment::offsetToName(int _offset){
+    std::unordered_set<std::string> name_set;
+    int v = 0;
+    _debug("_offset")
+    std::cout<<"_offset: "<<_offset<<"\n";
+    while(_offset)
+    {
+        if(_offset&1)
+             {
+                 std::cout<<fmt::format("1<<{}: {}\n",v,1<<v);
+                 name_set.emplace(this->tag_offset[std::to_string(1<<v)]);
+             }
+             _offset >>= 1;
+    }
+    std::cout<<fmt::format("{}",name_set);
+    return name_set;
+}
+
 
 std::unordered_map<int, std::set<std::string>> kaltsit::Recruitment::calcTag(std::set<std::string>& chosen_tag) {
     TIME_START
-    auto& ctr = chosen_tag_res;
+    //_debug("chosen_tag")
+    //std::cout<<fmt::format("{}",chosen_tag);
+    //_debug("tag_offset")
+    //std::cout<<fmt::format("{}",tag_offset);
     std::vector<int> chosen_tag_offset;
     std::unordered_map<int, std::set<std::string>> current_res;
     chosen_tag_offset.reserve(chosen_tag.size());
@@ -72,14 +98,15 @@ std::unordered_map<int, std::set<std::string>> kaltsit::Recruitment::calcTag(std
             }
         }
     }
-    return current_res;
 
-    /*
+    
     for (auto kv: current_res)
         std::cout << fmt::format("{}: {}", kv.first, kv.second) << "\n";
-    */
+    
      //std::cout << fmt::format("start_time:{}   end_time:{}\n", start_time, end_time);
     TIME_END("load calc_tag")
+    return current_res;
+
 }
 
 
@@ -114,5 +141,10 @@ bool kaltsit::Recruitment::countOffsets(int n, int offset) {
         offset >>= 1;
     }
     return cnt == n;
+}
+
+std::unordered_map<int, std::set<std::string>> kaltsit::Recruitment::calcTag(std::set<std::string>&& chosen_tag) {
+    auto ct = chosen_tag;
+    return calcTag(ct);
 }
 
