@@ -1,0 +1,16 @@
+{
+  "RANGED": "远程位",
+  "MEDIC": "医疗干员",
+  "MELEE": "近战位",
+  "PIONEER": "先锋干员",
+  "SNIPER": "狙击干员",
+  "CASTER": "术士干员",
+  "WARRIOR": "近卫干员",
+  "TANK": "重装干员",
+  "SUPPORT": "辅助干员",
+  "SPECIAL": "特种干员",
+  "star1": "支援机械",
+  "star2": "新手",
+  "star5": "资深干员",
+  "star6": "高级资深干员"
+}
