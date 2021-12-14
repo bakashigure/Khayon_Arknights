@@ -10,3 +10,7 @@
 /Khayon_Assistant/.idea/
 /Khayon_Assistant/node_modules/*
 Khayon_Assistant/.vscode/
+Khayon_Assistant/cmake-build-gcc11_debug/*
+Khayon_Assistant/cmake-build-gcc11_release/*
+Khayon_Assistant/cmake-build-release/*
+Khayon_Assistant/cmake-build-debug/*
